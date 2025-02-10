@@ -4,7 +4,7 @@ const nextConfig = {
         reactCompiler: true,
     },
     images: {
-        path: "/odin-shopping-cart",
+        path: "/",
         remotePatterns: [
             {
                 protocol: "https",
