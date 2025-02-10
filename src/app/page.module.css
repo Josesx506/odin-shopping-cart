@@ -108,23 +108,6 @@ a.secondary {
   flex-shrink: 0;
 }
 
-/* HTML:  */
-.loader {
-  width: 180px;
-  height: 14px;
-  --c: #000 0 15px,#0000 0 20px;
-  background: 
-    repeating-linear-gradient(135deg,var(--c)) left top,
-    repeating-linear-gradient( 45deg,var(--c)) left bottom;
-  background-size:  200% 50%;
-  background-repeat: no-repeat;
-  animation: l4 4s infinite linear;
-}
-
-@keyframes l4 {
-    100% {background-position:top right,bottom right}
-}
-
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {

@@ -1,50 +1,65 @@
 "use client"
 
-import React, { useRef, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars,faXmark,faCartShopping } from "@fortawesome/free-solid-svg-icons"
-import "../styles/nav.css"
+import "../styles/navbar.css"
+import { useState, useRef } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
+import useCart from "@/hooks/useCart"
 
-export default function Navbar() {
-  const menuRef = useRef("navItems");
-  const [toggle,setToggle] = useState(false);
+export default function NavBar() {
+  const navRef = useRef("navList");
+  const toggleRef = useRef("navToggler");
+  const [toggle, setToggle] = useState(false);
+  const { cartQuantity } = useCart();
 
-  function toggleMenu(e) {
+  const cartIcon = <FontAwesomeIcon icon={faCartShopping} />;
+
+  function handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    menuRef.current = menuRef.current == "navItems" ? "navItemsVisible" : "navItems";
-    setToggle(!toggle);
+    navRef.current = navRef.current == "navList" ? "navList--visible" : "navList";
+    toggleRef.current = toggleRef.current == "navToggler" ? "navToggler is-active" : "navToggler";
+    setToggle((prev) => !prev);
   }
 
   function closeMenu() {
-    menuRef.current = "navItems";
+    navRef.current = "navList";
+    toggleRef.current = "navToggler";
     setToggle(false);
   }
-  
-  const openIcon = <FontAwesomeIcon icon={faBars} className="hamburger" />;
-  const closeIcon = <FontAwesomeIcon icon={faXmark} className="hamburger" />;
-  const cartIcon = <FontAwesomeIcon icon={faCartShopping} />
 
   return (
-    <div className="container">
-      <div className="nav">
-        <button className={"navToggle"} onClick={toggleMenu}>{!toggle ? openIcon : closeIcon}</button>
-        <div className={menuRef.current}>
-          <div className="navList left">
-            <Link className="navItem" href="/contacts" onClick={closeMenu}>Contacts</Link>
-            <Link className="navItem" href="/shop" onClick={closeMenu}>Shop</Link>
-          </div>
-          <div className="navList center">
-            <Link className="navItem" href="/" onClick={closeMenu}><h3>NavHome</h3></Link>
-          </div>
-          <div className="navList right">
-            <Link className="navItem" href="/signin" onClick={closeMenu}>Sign In</Link>
-            <Link className="navItem" href="/signup" onClick={closeMenu}>Sign Up</Link>
-            <Link className="navItem cart" href="/cart" onClick={closeMenu}>{cartIcon}</Link>
-          </div>
-        </div>
+    <div className="navHolder">
+      <div className="navLogo">
+        <Link className="navItem" onClick={closeMenu} href="https://josesx506.github.io/Odin_Project_FS/">
+          <Image
+            src="/store.svg"
+            alt="Store Icon"
+            width={80} height={40}
+            priority
+            style={{margin:0, padding:0}}
+          />
+          <div style={{justifySelf: "center"}}>Odin</div>
+        </Link>
       </div>
+      <div onClick={handleClick} id="hamburger" className={toggleRef.current}>
+        <span className="line"></span>
+        <span className="line"></span>
+        <span className="line"></span>
+      </div>
+      <nav className={navRef.current}>
+        <div className="navList--internal">
+          <Link className="navItem" onClick={closeMenu} href="/">Home</Link>
+          <Link className="navItem" onClick={closeMenu} href="/shop">Shop</Link>
+          <Link className="navItem" onClick={closeMenu} href="/about">About</Link>
+        </div>
+        <Link className="navItem cart" onClick={closeMenu} href="/cart">
+          {cartIcon}
+          <span>{cartQuantity()}</span>
+        </Link>
+      </nav>
     </div>
   )
 }

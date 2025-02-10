@@ -1,12 +1,24 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
-    output: "export",
     experimental: {
         reactCompiler: true,
     },
     images: {
-      path: "/odin-nextjs-router",
-      domains: ['dummyjson.com',"picsum.photos","robohash.org"],
+        path: "/odin-shopping-cart",
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "cdn.dummyjson.com",
+                port: "",
+                pathname: "/**",
+          },
+          {
+              protocol: "https",
+              hostname: "images.pexels.com",
+              port: "",
+              pathname: "/**",
+        },
+        ],
     }
 };
 
