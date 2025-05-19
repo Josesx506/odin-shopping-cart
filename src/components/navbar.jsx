@@ -6,7 +6,7 @@ import "../styles/navbar.css"
 import { useState, useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
-import useCart from "@/hooks/useCart"
+import useCart from "@/hooks/useCart";
 import Store from '@/imgs/store.svg';
 
 export default function NavBar() {

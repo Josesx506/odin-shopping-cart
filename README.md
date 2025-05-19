@@ -48,7 +48,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - Learnt to generate css variables like component index from jsx and make it accessible within css files for animation and design. (Check memory card project `<Win />` component too).
 - Utilized LocalForage with indexDB backend for caching data on client and persisting updates following refresh
     > [!TODO]
-    > Learn how to encrypt data in client cache for security purposes
+    > Learn how to encrypt data in client cache for security purposes and revalidate cache data as part of ISR (Wouldn't work on github)
 - Used first react utility function to format currency values.
 - Used grid areas for the first time to improve card arrangement across media queries.
 
@@ -71,4 +71,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
  
 
  ### Roadblocks
- Struggled to implement an animated product carousel on the homepage with css and settled for an interactive one with buttons for the user to select products.
+ - Struggled to implement an animated product carousel on the homepage with css and settled for an interactive one with buttons for the user to select products.
+ - Github doesn't work with dynamic routes from pagination so I had to force all my pages to default to only the first page in the deployment repo.
+    The original syntax in this repo still works locally. Alternative was to deploy to vercel but all my other projects are on github. The static 
+    page requirement is starting to be a problem.

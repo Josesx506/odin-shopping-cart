@@ -1,13 +1,10 @@
 {
-  "homepage": "http://josesx506.github.io/odin-shopping-cart",
   "name": "09_shopping_cart",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
   },

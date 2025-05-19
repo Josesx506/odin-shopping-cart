@@ -4,7 +4,6 @@ const nextConfig = {
         reactCompiler: true,
     },
     images: {
-        path: "/",
         remotePatterns: [
             {
                 protocol: "https",

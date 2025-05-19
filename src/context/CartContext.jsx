@@ -1,7 +1,7 @@
 "use client";
 
 import { getCartItems, cacheCart } from "@/components/pullJSON";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 
 export const CartContext = createContext();
 
